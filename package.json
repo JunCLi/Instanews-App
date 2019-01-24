@@ -18,9 +18,9 @@
   "homepage": "https://github.com/JunCLi/Instanews-App#readme",
   "devDependencies": {
     "browser-sync": "^2.26.3",
-    "eslint": "^5.12.1",
     "gulp": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
     "gulp-rename": "^1.4.0",
-    "terser": "^3.14.1"
+    "gulp-terser": "^1.1.7"
   }
 }

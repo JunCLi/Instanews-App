@@ -1,8 +1,8 @@
 const gulp = require('gulp');
 
-const terser = require('terser'),
+const terser = require('gulp-terser'),
       rename = require('gulp-rename'),
-      eslint = require('eslint'),
+      eslint = require('gulp-eslint'),
       browserSync = require('browser-sync').create();
 
 gulp.task('eslint', () => {
@@ -28,7 +28,7 @@ gulp.task('watch', () => {
     }
   });
   gulp.watch('./app/js/**/*.js', gulp.series(['eslint', 'minifyjs']));
-  gulp.watch('./*html').on('change', browserSync.reload);
+  gulp.watch('./*.html').on('change', browserSync.reload);
   gulp.watch('');
 });
 
