@@ -24,11 +24,11 @@ gulp.task('minifyjs', done => {
 gulp.task('watch', () => {
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: "./app/"
     }
   });
   gulp.watch('./app/js/**/*.js', gulp.series(['eslint', 'minifyjs']));
-  gulp.watch('./app/*html').on('change', browserSync.reload);
+  gulp.watch('./*html').on('change', browserSync.reload);
   gulp.watch('');
 });
 
