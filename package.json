@@ -1,0 +1,26 @@
+{
+  "name": "instanews-app",
+  "version": "1.0.0",
+  "description": "project 2 from red academy. Instanews app will pull top stories from New York Times using an api and display them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JunCLi/Instanews-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JunCLi/Instanews-App/issues"
+  },
+  "homepage": "https://github.com/JunCLi/Instanews-App#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.12.1",
+    "gulp": "^4.0.0",
+    "gulp-rename": "^1.4.0",
+    "terser": "^3.14.1"
+  }
+}
