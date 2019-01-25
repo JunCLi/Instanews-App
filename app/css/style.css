@@ -7,6 +7,8 @@ General styling
 body {
   background-color: black;
   font-size: 16px;
+
+  margin: 0;
 }
 
 ul {
@@ -60,7 +62,7 @@ header {
   
   .select-sections {
     align-items: start;
-    margin-right: 15  %;
+    margin-right: 15%;
   }
 }
 
