@@ -13,7 +13,7 @@ const rename = require('gulp-rename'),
 // Development Tasks
 gulp.task('sass', () => {
   return gulp
-    .src('./app/sass/**/*.scss')
+    .src('./app/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ["last 2 versions"]
@@ -29,7 +29,7 @@ gulp.task('watch', () => {
       baseDir: './app/'
     }
   });
-  gulp.watch('./app/sass/**/*.scss', gulp.series(['sass'])).on('change', browserSync.reload);
+  gulp.watch('./app/scss/**/*.scss', gulp.series(['sass'])).on('change', browserSync.reload);
   gulp.watch('./app/js/**/*.js').on('change', browserSync.reload);
   gulp.watch('./app/*.html').on('change', browserSync.reload);
 });
