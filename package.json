@@ -1,26 +1,24 @@
 {
-  "name": "instanews-app",
+  "name": "gulp-testing",
   "version": "1.0.0",
-  "description": "project 2 from red academy. Instanews app will pull top stories from New York Times using an api and display them",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JunCLi/Instanews-App.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JunCLi/Instanews-App/issues"
-  },
-  "homepage": "https://github.com/JunCLi/Instanews-App#readme",
   "devDependencies": {
     "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
     "gulp": "^4.0.0",
-    "gulp-eslint": "^5.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cache": "^1.1.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-imagemin": "^5.0.3",
     "gulp-rename": "^1.4.0",
-    "gulp-terser": "^1.1.7"
+    "gulp-sass": "^4.0.2",
+    "gulp-terser": "^1.1.7",
+    "node-sass": "^4.11.0"
   }
 }
