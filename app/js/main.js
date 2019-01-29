@@ -59,8 +59,9 @@ $(function(){
         let articleCounter = 0;
         articles.forEach(article => {
           if (article.multimedia.length !== 0 && articleCounter < 12) {
+            console.log(article);
             articleCounter++;
-            $('main ul').append(`<li><a></a></li>`);
+            $('main ul').append(`<li><a href=${article.url}></a></li>`);
             $(`main ul li:nth-child(${articleCounter})`).css('backgroundImage', `url(${article.multimedia[4].url})`)
           }
         })
