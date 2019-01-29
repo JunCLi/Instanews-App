@@ -18,6 +18,18 @@ $(function(){
     }
   };
 
+  const keepHeaderConsistent = () => {
+    if ($nytLogo.css('align-self') === 'end' && $mainSection.find('li').length > 0) {
+      $header.css('height', '500');
+    } else if ($nytLogo.css('align-self') === 'center' && $mainSection.find('li').length > 0) {
+      $header.css('height', '250');
+    }
+  };
+
+  $(window).on('resize', () => {
+    keepHeaderConsistent();
+  });
+
   $dropDown.on('change', (event) => {
     const selectedCategory = $dropDown.val();
     const targetUrl = `https://api.nytimes.com/svc/topstories/v2/${selectedCategory}.json?api-key=fas25Dtm8dhqohIpf8HSFFMv5gyzhoAY`
