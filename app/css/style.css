@@ -406,7 +406,7 @@ main {
     --numberOfCells: 3;
     --cellHeight: calc(var(--cellWidth) * 1.5); } }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1240px) {
   :root {
     --numberOfCells: 4;
     --cellHeight: calc(var(--cellWidth) * 1.5); } }
@@ -417,7 +417,7 @@ footer styling
 =========================
 */
 footer {
-  margin: 25px auto 0;
+  margin: 25px auto 50px;
   width: 95%;
   max-width: 400px;
   color: #c2c2c2;
@@ -426,4 +426,4 @@ footer {
 
 @media screen and (min-width: 1240px) {
   footer {
-    margin: 0 auto 0 0; } }
+    margin-left: 0; } }
