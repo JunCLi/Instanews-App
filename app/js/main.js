@@ -6,6 +6,11 @@ $(function(){
   const $nytLogo = $('.nyt-logo');
   const $mainSection = $('main');
 
+  resizeFontSize = () => {
+    const fontSize = $mainSection.find('li').width() * 0.06;
+    $mainSection.css('font-size', fontSize);
+  };
+
   const minimizeHeader = () => {
     if ($nytLogo.css('align-self') === 'end') {
       $header.animate({
@@ -28,6 +33,7 @@ $(function(){
 
   $(window).on('resize', () => {
     keepHeaderConsistent();
+    resizeFontSize();
   });
 
   $dropDown.on('change', (event) => {
@@ -41,35 +47,35 @@ $(function(){
       }
     })
     .done(data => {
-      const $main = $('main');
+      
 
       const clearMain = () => {
-        $main.children().remove();
+        $mainSection.children().remove();
       }
 
       const loaderGif = () => {
         clearMain();
-        $main.prepend('<img class="loading-gif" src="images/ajax-loader.gif">')
+        $mainSection.prepend('<img class="loading-gif" src="images/ajax-loader.gif">')
       }
 
       const displayArticles = (data) => {
         clearMain();
-        $main.append('<ul></ul>');
+        $mainSection.append('<ul></ul>');
         const articles = data.results;
         let articleCounter = 0;
         articles.forEach(article => {
           if (article.multimedia.length !== 0 && articleCounter < 12) {
-            console.log(article);
             articleCounter++;
-            $('main ul').append(`<li><a href=${article.url}></a></li>`);
+            $('main ul').append(`<li><a href=${article.url}><p>${article.abstract}</p></a></li>`);
             $(`main ul li:nth-child(${articleCounter})`).css('backgroundImage', `url(${article.multimedia[4].url})`)
           }
         })
+        resizeFontSize();
       };
 
       minimizeHeader();
       loaderGif();
-      setTimeout(displayArticles, 2000, data);
+      setTimeout(displayArticles, 1000, data);
     });
   });
 });
