@@ -373,6 +373,12 @@ header {
 Main styling
 =========================
 */
+.loading-gif {
+  display: block;
+  width: 50%;
+  max-width: 400px;
+  margin: 0 auto; }
+
 :root {
   --wrapperWidth: 100vw;
   --numberOfCells: 1;
