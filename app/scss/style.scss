@@ -31,24 +31,23 @@ header styling
 */
 
 header {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
 
+  padding: 40px 0;
   height: 85vh;
 }
 
 .nyt-logo {
-  margin: 15px 0;
+  align-self: end;
+  
   height: 100%;
   max-height: 400px;
   width: 100%;
   max-width: 350px;
 }
-
-
-
 
 .select-sections {
   display: flex;
@@ -71,22 +70,35 @@ header {
 
 @media screen and (min-width: 600px) {
   header {
-    flex-flow: row nowrap;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .nyt-logo {
+    align-self: center;
+    justify-self: right;
+    
+    padding: 20px 0; 
   }
   
   .select-sections {
     align-items: start;
-    margin-right: 15%;
+    justify-self: left;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1240px) {
   header {
-    justify-content: flex-start;
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+
+  .nyt-logo {
+    justify-self: center;
   }
 
   .select-sections {
-    margin-left: 10%;
+    margin-left: 50px;
   }
 }
 
@@ -157,8 +169,8 @@ footer styling
 */
 
 footer {
-  margin: 0 auto;
-  width: 75%;
+  margin: 25px auto 0;
+  width: 95%;
   max-width: 400px;
 
   color: #c2c2c2;

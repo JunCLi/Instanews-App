@@ -2,10 +2,27 @@
 $(function(){
   
   const $dropDown = $('.select-category');
-  
+  const $header = $('header');
+  const $nytLogo = $('.nyt-logo');
+  const $mainSection = $('main');
+
+  const minimizeHeader = () => {
+    if ($nytLogo.css('align-self') === 'end') {
+      $header.animate({
+        height: '500'
+      }, 'slow');
+    } else {
+      $header.animate({
+        height: '250'
+      }, 'slow');
+    }
+  };
+
   $dropDown.on('change', (event) => {
     const selectedCategory = $dropDown.val();
     const targetUrl = `https://api.nytimes.com/svc/topstories/v2/${selectedCategory}.json?api-key=fas25Dtm8dhqohIpf8HSFFMv5gyzhoAY`
+
+    minimizeHeader();
 
     $('main').children().remove();
     $('main').append('<ul></ul>');
@@ -25,9 +42,7 @@ $(function(){
         }
       })
 
-      // $('header').animate({
-      //   height: '25'
-      // }, 'slow')
+      
       
     });
   });

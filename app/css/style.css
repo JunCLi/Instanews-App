@@ -306,23 +306,16 @@ header styling
 =========================
 */
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: 40px 0;
   height: 85vh; }
 
 .nyt-logo {
-  margin: 15px 0;
+  -ms-flex-item-align: end;
+      align-self: end;
   height: 100%;
   max-height: 400px;
   width: 100%;
@@ -351,23 +344,29 @@ header {
 
 @media screen and (min-width: 600px) {
   header {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-            flex-flow: row nowrap; }
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .nyt-logo {
+    -ms-flex-item-align: center;
+        align-self: center;
+    justify-self: right;
+    padding: 20px 0; }
   .select-sections {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: start;
-    margin-right: 15%; } }
+    justify-self: left; } }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1240px) {
   header {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start; }
+    grid-template-columns: 1fr 1fr 2fr; }
+  .nyt-logo {
+    justify-self: center; }
   .select-sections {
-    margin-left: 10%; } }
+    margin-left: 50px; } }
 
 /*
 =========================
@@ -418,8 +417,8 @@ footer styling
 =========================
 */
 footer {
-  margin: 0 auto;
-  width: 75%;
+  margin: 25px auto 0;
+  width: 95%;
   max-width: 400px;
   color: #c2c2c2;
   font-size: 1.5em;
