@@ -22,8 +22,13 @@ $(function(){
           articleCounter++;
           $('main ul').append(`<li><a></a></li>`);
           $(`main ul li:nth-child(${articleCounter})`).css('backgroundImage', `url(${article.multimedia[4].url})`)
-        } 
+        }
       })
+
+      // $('header').animate({
+      //   height: '25'
+      // }, 'slow')
+      
     });
   });
 });
