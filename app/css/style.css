@@ -409,25 +409,27 @@ main {
       main ul li a {
         display: block;
         position: relative;
+        overflow: hidden;
         width: 100%;
         height: 100%;
         color: white; }
         main ul li a:hover > p {
           height: 50%;
-          color: white;
-          opacity: 1; }
+          padding: 7.5%;
+          font-size: 1.25em;
+          color: white; }
         main ul li a p {
           position: absolute;
           bottom: 0;
           margin: 0;
-          padding: 7.5%;
+          padding: 0 7.5%;
           width: 100%;
           height: 0;
+          font-size: 0;
           background-color: rgba(0, 0, 0, 0.5);
-          opacity: 0;
           text-align: center;
-          -webkit-transition: height 1s, opacity 1s;
-          transition: height 1s, opacity 1s; }
+          -webkit-transition: height 1s, padding 1s;
+          transition: height 1s, padding 1s; }
 
 @-webkit-keyframes show-hide-abstract {
   0% {

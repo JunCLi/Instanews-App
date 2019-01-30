@@ -6,17 +6,17 @@ $(function(){
   const $nytLogo = $('.nyt-logo');
   const $mainSection = $('main');
 
-  resizeFontSize = () => {
-    const fontSize = $mainSection.find('li').width() * 0.06;
-    $mainSection.css('font-size', fontSize);
-  };
-
   const minimizeHeader = () => {
     if ($nytLogo.css('align-self') === 'end') {
       $header.addClass('shrink-header');
     } else {
       $header.addClass('shrink-header');
     }
+  };
+
+  resizeFontSize = () => {
+    const fontSize = $mainSection.find('li').width() * 0.05;
+    $mainSection.css('font-size', fontSize);
   };
 
   $(window).on('resize', () => {
@@ -28,14 +28,10 @@ $(function(){
     const targetUrl = `https://api.nytimes.com/svc/topstories/v2/${selectedCategory}.json?api-key=fas25Dtm8dhqohIpf8HSFFMv5gyzhoAY`
     $.ajax({
       method: 'GET',
-      url: targetUrl,
-      success: () => {
-        
-      }
+      url: targetUrl
     })
     .done(data => {
       
-
       const clearMain = () => {
         $mainSection.children().remove();
       }

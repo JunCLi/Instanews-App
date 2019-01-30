@@ -156,6 +156,7 @@ main {
       a {
         display: block;
         position: relative;
+        overflow: hidden;
 
         width: 100%;
         height: 100%;
@@ -164,9 +165,10 @@ main {
 
         &:hover > p {
           height: 50%;
+          padding: 7.5%;
           
+          font-size: 1.25em;
           color: white;
-          opacity: 1;
         }
 
         p {
@@ -174,15 +176,15 @@ main {
           bottom: 0;
 
           margin: 0;
-          padding: 7.5%;
+          padding: 0 7.5%;
           width: 100%;
           height: 0;
           
+          font-size: 0;
           background-color: rgba(0, 0, 0, 0.5);
-          opacity: 0;
           text-align: center;
 
-          transition: height 1s, opacity 1s;
+          transition: height 1s, padding 1s;
         }
       }
     }
