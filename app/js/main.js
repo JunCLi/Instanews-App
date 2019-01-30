@@ -13,26 +13,13 @@ $(function(){
 
   const minimizeHeader = () => {
     if ($nytLogo.css('align-self') === 'end') {
-      $header.animate({
-        height: '500'
-      }, 'slow');
+      $header.addClass('shrink-header');
     } else {
-      $header.animate({
-        height: '250'
-      }, 'slow');
-    }
-  };
-
-  const keepHeaderConsistent = () => {
-    if ($nytLogo.css('align-self') === 'end' && $mainSection.find('li').length > 0) {
-      $header.css('height', '500');
-    } else if ($nytLogo.css('align-self') === 'center' && $mainSection.find('li').length > 0) {
-      $header.css('height', '250');
+      $header.addClass('shrink-header');
     }
   };
 
   $(window).on('resize', () => {
-    keepHeaderConsistent();
     resizeFontSize();
   });
 

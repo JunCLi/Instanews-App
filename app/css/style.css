@@ -312,7 +312,9 @@ header {
   grid-template-columns: 1fr;
   justify-items: center;
   padding: 40px 0;
-  height: 85vh; }
+  height: 85vh;
+  -webkit-transition: height 1s;
+  transition: height 1s; }
 
 .nyt-logo {
   -ms-flex-item-align: end;
@@ -343,6 +345,9 @@ header {
   width: 150px;
   font-size: 1.3em; }
 
+.shrink-header {
+  height: 500px; }
+
 @media screen and (min-width: 600px) {
   header {
     grid-template-rows: 1fr;
@@ -359,7 +364,9 @@ header {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: start;
-    justify-self: left; } }
+    justify-self: left; }
+  .shrink-header {
+    height: 250px; } }
 
 @media screen and (min-width: 1240px) {
   header {
@@ -406,9 +413,9 @@ main {
         height: 100%;
         color: white; }
         main ul li a:hover > p {
+          height: 50%;
           color: white;
-          opacity: 1;
-          height: 50%; }
+          opacity: 1; }
         main ul li a p {
           position: absolute;
           bottom: 0;
