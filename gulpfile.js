@@ -50,7 +50,7 @@ gulp.task('importHtml', () => {
 gulp.task('minifycss', () => {
   return gulp.src('./app/css/**/*.css')
     .pipe(cssnano())
-    .pipe(rename('style.min.css'))
+    // .pipe(rename('style.css'))
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());
 });
@@ -58,16 +58,21 @@ gulp.task('minifycss', () => {
 gulp.task('minifyjs', () => {
   return gulp.src('./app/js/**/*.js')
     .pipe(terser())
-    .pipe(rename({extname: '.min.js'}))
+    // .pipe(rename({extname: '.js'}))
     .pipe(gulp.dest('./dist/js'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('images', () => {
-  return gulp.src('./app/images/**/*.+(png|jpg|jpeg|gif|svg)')
+  return gulp.src('./app/images/**/*.+(png|jpg|jpeg|gif)')
   .pipe(cache(imagemin({
       interlaced: true
     })))
+  .pipe(gulp.dest('./dist/images'))
+});
+
+gulp.task('svg', () => {
+  return gulp.src('./app/images/**/*.svg')
   .pipe(gulp.dest('./dist/images'))
 });
 
@@ -80,12 +85,12 @@ gulp.task('clean:dist', () => {
   return del(['dist/**/*', '!dist/images', '!dist/images/**/*']);
 });
 
-gulp.task('cache:clear',  callback => {
+gulp.task('cache:clear', callback => {
   return cache.clearAll(callback)
 });
 
 gulp.task('default', gulp.series(['eslint', 'watch']))
 
-gulp.task('build', gulp.series(['clean:dist', gulp.parallel(['importHtml', 'sass', 'minifycss', 'minifyjs', 'images', 'fonts'])]), () => {
+gulp.task('build', gulp.series(['clean:dist', gulp.parallel(['importHtml', 'sass', 'minifycss', 'minifyjs', 'images','svg', 'fonts'])]), () => {
   console.log('Building Files');
 });
