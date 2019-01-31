@@ -15,7 +15,11 @@ $(function(){
   };
 
   const resizeFontSize = () => {
-    const fontSize = $mainSection.find('li').width() * 0.05;
+    const $articleCell = $mainSection.find('li');
+    let fontSize = $articleCell.width() * 0.05;
+    if ($articleCell.height() ===  $articleCell.width()) {
+      fontSize = $articleCell.width() * 0.04;
+    }
     $mainSection.css('font-size', fontSize);
   };
 

@@ -423,7 +423,7 @@ main {
         color: white; }
         main ul li a:hover > p {
           height: 50%;
-          padding: 7.5%;
+          padding: 5% 7.5%;
           font-size: 1.25em;
           color: white; }
         main ul li a p {
@@ -438,18 +438,6 @@ main {
           text-align: center;
           -webkit-transition: height 1s, padding 1s;
           transition: height 1s, padding 1s; }
-
-@-webkit-keyframes show-hide-abstract {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@keyframes show-hide-abstract {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
 
 @media screen and (min-width: 600px) {
   :root {

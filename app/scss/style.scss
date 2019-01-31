@@ -165,7 +165,7 @@ main {
 
         &:hover > p {
           height: 50%;
-          padding: 7.5%;
+          padding: 5% 7.5%;
           
           font-size: 1.25em;
           color: white;
@@ -190,16 +190,6 @@ main {
     }
   }
 }
-
-@keyframes show-hide-abstract {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 
 @media screen and (min-width: 600px) {
   :root {
