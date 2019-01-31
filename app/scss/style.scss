@@ -5,6 +5,7 @@ Import styling
 */
 
 @import './partials/normalize';
+@import './partials/fonts';
 
 /*
 =========================
@@ -15,10 +16,11 @@ General styling
 body {
   overflow-x: hidden;
 
+  margin: 0;
+
   background-color: black;
   font-size: 16px;
-
-  margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 ul {
@@ -151,8 +153,6 @@ main {
       background-size: auto 100%;
       background-position: center;
       
-      
-
       a {
         display: block;
         position: relative;

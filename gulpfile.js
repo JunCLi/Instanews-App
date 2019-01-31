@@ -2,6 +2,7 @@ const gulp = require('gulp');
 
 const rename = require('gulp-rename'),
       terser = require('gulp-terser'),
+      eslint = require('gulp-eslint'),
       sass = require('gulp-sass'),
       autoprefixer = require('gulp-autoprefixer'),
       cssnano = require('gulp-cssnano'),
@@ -11,14 +12,20 @@ const rename = require('gulp-rename'),
       browserSync = require('browser-sync').create();
 
 // Development Tasks
+gulp.task('eslint', () => {
+  return gulp.src('./js/**/*.js')
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError());
+});
+      
 gulp.task('sass', () => {
-  return gulp
-    .src('./app/scss/**/*.scss')
+  return gulp.src('./app/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
-      browsers: ["last 2 versions"]
+      browsers: ['last 2 versions']
     }))
-    .pipe(rename("style.css"))
+    .pipe(rename('style.css'))
     .pipe(gulp.dest('./app/css'))
     .pipe(browserSync.stream());
 })
@@ -34,9 +41,6 @@ gulp.task('watch', () => {
   gulp.watch('./app/*.html').on('change', browserSync.reload);
 });
 
-gulp.task('default', gulp.series(['watch']))
-
-
 // Distribution Tasks
 gulp.task('importHtml', () => {
   return gulp.src('./app/*.html')
@@ -46,8 +50,8 @@ gulp.task('importHtml', () => {
 gulp.task('minifycss', () => {
   return gulp.src('./app/css/**/*.css')
     .pipe(cssnano())
-    .pipe(rename("style.min.css"))
-    .pipe(gulp.dest("./dist/css"))
+    .pipe(rename('style.min.css'))
+    .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());
 });
 
@@ -79,6 +83,8 @@ gulp.task('clean:dist', () => {
 gulp.task('cache:clear',  callback => {
   return cache.clearAll(callback)
 });
+
+gulp.task('default', gulp.series(['eslint', 'watch']))
 
 gulp.task('build', gulp.series(['clean:dist', gulp.parallel(['importHtml', 'sass', 'minifycss', 'minifyjs', 'images', 'fonts'])]), () => {
   console.log('Building Files');

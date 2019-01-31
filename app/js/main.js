@@ -14,7 +14,7 @@ $(function(){
     }
   };
 
-  resizeFontSize = () => {
+  const resizeFontSize = () => {
     const fontSize = $mainSection.find('li').width() * 0.05;
     $mainSection.css('font-size', fontSize);
   };
@@ -23,7 +23,7 @@ $(function(){
     resizeFontSize();
   });
 
-  $dropDown.on('change', (event) => {
+  $dropDown.on('change', () => {
     const selectedCategory = $dropDown.val();
     const targetUrl = `https://api.nytimes.com/svc/topstories/v2/${selectedCategory}.json?api-key=fas25Dtm8dhqohIpf8HSFFMv5gyzhoAY`
     $.ajax({
