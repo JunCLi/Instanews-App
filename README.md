@@ -33,7 +33,7 @@ The purpose of this project is to create an 'Instanews App'. When users pick a c
 2. 'app' is the working directory containing uncompressed code and assets
 3. 'dist' is the distribution directory containing compressed and ready-for-deployment code and assets for maximum performance
 
-##SCSS Organization
+## SCSS Organization
 Styles are coded with the sass css preprocessor, converted into css in the app directory for workflow, and finally minified and moved into dist for distribution.
 
 Generally, SCSS is organized in a modular top-to-bottom format. Global and site-wide styles are at the top and then each part of the website will follow from top to bottom.
