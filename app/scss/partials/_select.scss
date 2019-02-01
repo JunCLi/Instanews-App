@@ -1,0 +1,181 @@
+@mixin _select-form-reset() {
+  display: block;
+  padding: 0;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none; // Arrow clickable in some browsers
+    z-index: 2;
+  }
+
+  // This is the native select, we're making everything but the text invisible so we can see the button styles in the wrapper
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border: 1px solid transparent;
+    font-size: 16px; // Font size must the 16px or larger to prevent iOS page zoom on focus
+    outline: none;
+
+    /* Focus style */
+    &:focus {
+      background-color: transparent;
+      outline: none;
+    }
+  }
+
+  /* Set options to normal weight */
+  option {
+    font-weight: normal;
+  }
+
+  /* ------------------------------------  */
+  /* START OF UGLY BROWSER-SPECIFIC HACKS */
+  /* ----------------------------------  */
+
+  // Targeted via this hack http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7
+  x:-o-prefocus, &::after {
+    display: none;
+  }
+  // IE 10/11+ - This hides native dropdown button arrow so it will have the custom appearance,
+  // IE 9 and earlier get a native select - targeting media query hack via http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5 - looking for better ways to achieve this targeting
+  // The second rule removes the odd blue bg color behind the text in the select button in IE 10/11 and sets the text color to match the focus style's - fix via http://stackoverflow.com/questions/17553300/change-ie-background-color-on-unopened-focused-select-box */
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      select {
+        &::-ms-expand {
+          display: none;
+        }
+
+        &:focus::-ms-value {
+          background: transparent;
+          color: #000;
+        }
+
+      }
+    }
+  }
+
+  @supports( -moz-appearance: none ) {
+    & {
+      width: 100%;          
+    }
+  }
+}
+
+
+// Demo Colors
+$mainColour: rgb(152, 198, 236);
+$gray: rgb(214, 214, 214);
+$placeholder: rgb(114, 129, 212);
+$border: #E6E6E6;
+
+$border-width: 3px;
+
+// Select function
+@mixin form-input-select(){
+  @include _select-form-reset;
+  color: $mainColour;
+  display: block;
+  box-shadow: none;
+  font-size: 1em;
+  margin-top: 9px;
+  margin-bottom: 15px;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none; // Arrow clickable in some browsers
+
+    // triangle set up
+    border: 1px solid transparent; // reset all borders
+    width: 0;
+    height: 0;
+    right: 16px;
+  }
+
+  // top arrow
+  &::before {
+    bottom: 55%;
+    border-width: 0 6.5px 8px 6.5px;
+    border-bottom-color: $gray;
+  }
+
+  // bottom arrow
+  &::after {
+    border-width: 8px 6.5px 0 6.5px;
+    border-top-color: $gray;
+    top: 55%;
+  }
+
+  &:hover {
+
+    select {
+      box-shadow: 0 2px 3px rgba($mainColour, 0.1) inset;
+      border-color: $mainColour;
+
+      // outline is critical but when we are hovering the div has the border already.
+      &:focus {
+        outline-color: transparent;
+      }
+      
+    }
+
+    &::before {
+      border-bottom-color: $mainColour;
+    }
+    &::after {
+      border-top-color: $mainColour;
+    }
+
+  }
+
+  // Make sure you set all padding, borders on this select and not the parent div.
+  // this is mainly for :focus and tabbing.
+
+  select {
+    border: $border-width solid $border;
+    border-radius: 0;
+    font-weight: 1000;
+    color: inherit;
+    padding: 11px 15px;
+    line-height: normal;
+    transition: border-color 0.2s ease,
+                outline 0.2s ease;
+
+
+    // we really need this for the tabbers
+    // causes double borders though
+    &:focus {
+      box-shadow: 0 3px 4px rgba($mainColour, 0.3) inset;
+      // outline is critical for usability
+      outline: $border-width solid $mainColour;
+      outline-offset: -#{$border-width}; //offset vs width
+    }
+
+    &[disabled], &:disabled{
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    // we use invalid like a placeholder
+    &:invalid {
+      color: $placeholder;
+    }
+  }
+}
+
+// Show the function
+[include*="form-input-select()"] {
+  @include form-input-select();
+}
