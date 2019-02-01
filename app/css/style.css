@@ -299,11 +299,21 @@ template {
 Most of this is not my code, I adapted and changed the code found on a codepen to suit my needs. The codepen can be found in the readme.
 =========================
 */
+/*
+=========================
+My comments again
+=========================
+*/
 [include*="form-input-select()"] {
   display: block;
   padding: 0;
   position: relative;
   /* Set options to normal weight */
+  /*
+=========================
+This following section has comments that are obviously not mine
+=========================
+*/
   /* ------------------------------------  */
   /* START OF UGLY BROWSER-SPECIFIC HACKS */
   /* ----------------------------------  */

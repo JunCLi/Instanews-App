@@ -34,6 +34,7 @@ header styling
 =========================
 */
 
+// grid to position icon and section dropdown
 header {
   display: grid;
   grid-template-rows: 2fr 1fr;
@@ -43,6 +44,7 @@ header {
   padding: 40px 0;
   height: 85vh;
 
+  // animate sliding of header
   transition: height 1s;
 }
 
@@ -66,10 +68,13 @@ header {
   } 
 }
 
+// class that will apply to shrink header when category is chosen
 .shrink-header {
   height: 500px;
 }
 
+
+// change grid to reposition elements on larger screen sizes
 @media screen and (min-width: 600px) {
   header {
     grid-template-rows: 1fr;
@@ -89,11 +94,13 @@ header {
     justify-self: left;
   }
 
+  // different shrinking height for larger screen sizes
   .shrink-header {
     height: 250px;
   }
 }
 
+// reposition elements to left for desktop size screen
 @media screen and (min-width: 1240px) {
   header {
     grid-template-columns: 1fr 1fr 2fr;
@@ -121,10 +128,13 @@ Main styling
   margin: 0 auto;
 }
 
+// create dynamic css variables to maintain aspect ratios of articles
 :root {
+  // width of entire section + number of cells
   --wrapperWidth: 100vw;
   --numberOfCells: 1;
 
+  // article width and height
   --cellWidth: calc(var(--wrapperWidth) / var(--numberOfCells));
   --cellHeight: var(--cellWidth);
 }
@@ -132,6 +142,7 @@ Main styling
 main {
   margin: 0;
   
+  // using the variables to create dynamic grid
   ul {
     display: grid;
     grid-template-columns: repeat(var(--numberOfCells), 1fr);
@@ -140,6 +151,7 @@ main {
     width: var(--wrapperWidth);
     padding: 0;
 
+    // give list items appropriate height for articles
     li {
       width: var(--cellWidth);
       height: var(--cellHeight);
@@ -156,6 +168,7 @@ main {
 
         color: white;
 
+        // when articles are hovered over, will slide article abstract
         &:hover > p {
           height: 50%;
           padding: 5% 7.5%;
@@ -164,6 +177,7 @@ main {
           color: white;
         }
 
+        // give article abstract a translucent background and hide it until hovered over
         p {
           position: absolute;
           bottom: 0;
@@ -184,6 +198,7 @@ main {
   }
 }
 
+// Increase number of cells/columns of articles, change from square to rectangles depending on screen size
 @media screen and (min-width: 600px) {
   :root {
     --numberOfCells: 2;
@@ -221,6 +236,7 @@ footer {
   text-align: center;
 }
 
+// position footer to left for desktop view
 @media screen and (min-width: 1240px) {
   footer {
     margin-left: 0;

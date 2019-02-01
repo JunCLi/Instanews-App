@@ -4,23 +4,22 @@ Most of this is not my code, I adapted and changed the code found on a codepen t
 =========================
 */
 
-
-
 @mixin _select-form-reset() {
   display: block;
   padding: 0;
   position: relative;
 
+  // create arrows + make them unclickable
   &::before,
   &::after {
     content: '';
     display: block;
     position: absolute;
-    pointer-events: none; // Arrow clickable in some browsers
+    pointer-events: none;
     z-index: 2;
   }
 
-  // This is the native select, we're making everything but the text invisible so we can see the button styles in the wrapper
+  // eliminate normal select styles
   select {
     -webkit-appearance: none;
     appearance: none;
@@ -43,6 +42,13 @@ Most of this is not my code, I adapted and changed the code found on a codepen t
   option {
     font-weight: normal;
   }
+
+/*
+=========================
+This following section has comments that are obviously not mine
+=========================
+*/
+
 
   /* ------------------------------------  */
   /* START OF UGLY BROWSER-SPECIFIC HACKS */
@@ -77,6 +83,13 @@ Most of this is not my code, I adapted and changed the code found on a codepen t
   }
 }
 
+/*
+=========================
+My comments again
+=========================
+*/
+
+// My custom colours I chose
 $main-colour: rgb(0, 0, 0);
 $secondary-colour: rgb(133, 184, 231);
 $gray: #D6D6D6;
@@ -85,7 +98,7 @@ $border: #E6E6E6;
 
 $border-width: 3px;
 
-// Select function
+// Most of my select styling
 @mixin form-input-select(){
   @include _select-form-reset;
   color: $main-colour;
@@ -97,12 +110,13 @@ $border-width: 3px;
   margin-bottom: 20px;
   width: 80%;
 
+  // Special arrows setup, I think I don't need most of these but I kept them in just incase something breaks without them for whatever reason
   &::before,
   &::after {
     content: '';
     display: block;
     position: absolute;
-    pointer-events: none; // Arrow clickable in some browsers
+    pointer-events: none;
 
     // triangle set up
     border: 1px solid transparent; // reset all borders
@@ -125,17 +139,15 @@ $border-width: 3px;
     top: 55%;
   }
 
+  // hover styles
   &:hover {
-
     select {
       box-shadow: 0 2px 3px rgba($secondary-colour, 0.1) inset;
       border-color: $secondary-colour;
 
-      // outline is critical but when we are hovering the div has the border already.
       &:focus {
         outline-color: transparent;
       }
-      
     }
 
     &::before {
@@ -144,12 +156,9 @@ $border-width: 3px;
     &::after {
       border-top-color: $secondary-colour;
     }
-
   }
 
-  // Make sure you set all padding, borders on this select and not the parent div.
-  // this is mainly for :focus and tabbing.
-
+  // specific styles for tabbing?
   select {
     border: $border-width solid $border;
     border-radius: 0;
