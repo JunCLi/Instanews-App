@@ -294,6 +294,105 @@ template {
   font-weight: 300;
   font-style: normal; }
 
+[include*="form-input-select()"] {
+  display: block;
+  padding: 0;
+  position: relative;
+  /* Set options to normal weight */
+  /* ------------------------------------  */
+  /* START OF UGLY BROWSER-SPECIFIC HACKS */
+  /* ----------------------------------  */
+  color: black;
+  display: block;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%; }
+  [include*="form-input-select()"]::before, [include*="form-input-select()"]::after {
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    z-index: 2; }
+  [include*="form-input-select()"] select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+         appearance: none;
+    background: white;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border: 1px solid transparent;
+    font-size: 16px;
+    outline: none;
+    /* Focus style */ }
+    [include*="form-input-select()"] select:focus {
+      background-color: white;
+      outline: none; }
+  [include*="form-input-select()"] option {
+    font-weight: normal; }
+  [include*="form-input-select()"] x:-o-prefocus, [include*="form-input-select()"]::after {
+    display: none; }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    [include*="form-input-select()"] select::-ms-expand {
+      display: none; }
+    [include*="form-input-select()"] select:focus::-ms-value {
+      background: white;
+      color: #000; } }
+  @supports (-moz-appearance: none) {
+    [include*="form-input-select()"] {
+      width: 100%; } }
+  [include*="form-input-select()"]::before, [include*="form-input-select()"]::after {
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid transparent;
+    width: 0;
+    height: 0;
+    right: 16px; }
+  [include*="form-input-select()"]::before {
+    bottom: 55%;
+    border-width: 0 6.5px 8px 6.5px;
+    border-bottom-color: #D6D6D6; }
+  [include*="form-input-select()"]::after {
+    border-width: 8px 6.5px 0 6.5px;
+    border-top-color: #D6D6D6;
+    top: 55%; }
+  [include*="form-input-select()"]:hover select {
+    -webkit-box-shadow: 0 2px 3px rgba(133, 184, 231, 0.1) inset;
+            box-shadow: 0 2px 3px rgba(133, 184, 231, 0.1) inset;
+    border-color: #85b8e7; }
+    [include*="form-input-select()"]:hover select:focus {
+      outline-color: transparent; }
+  [include*="form-input-select()"]:hover::before {
+    border-bottom-color: #85b8e7; }
+  [include*="form-input-select()"]:hover::after {
+    border-top-color: #85b8e7; }
+  [include*="form-input-select()"] select {
+    border: 3px solid #E6E6E6;
+    border-radius: 0;
+    font-weight: 400;
+    color: inherit;
+    padding: 11px 15px;
+    line-height: normal;
+    -webkit-transition: border-color 0.2s ease, outline 0.2s ease;
+    transition: border-color 0.2s ease, outline 0.2s ease; }
+    [include*="form-input-select()"] select:focus {
+      -webkit-box-shadow: 0 3px 4px rgba(133, 184, 231, 0.3) inset;
+              box-shadow: 0 3px 4px rgba(133, 184, 231, 0.3) inset;
+      outline: 3px solid #85b8e7;
+      outline-offset: -3px; }
+    [include*="form-input-select()"] select[disabled], [include*="form-input-select()"] select:disabled {
+      opacity: 0.4;
+      cursor: not-allowed; }
+    [include*="form-input-select()"] select:invalid {
+      color: #99b9d4; }
+
 /*
 =========================
 General styling
@@ -346,12 +445,6 @@ header {
   .select-sections h3 {
     color: white;
     font-size: 1.75em; }
-
-.select-category {
-  margin: 15px 0;
-  padding: 2px;
-  width: 150px;
-  font-size: 1.3em; }
 
 .shrink-header {
   height: 500px; }

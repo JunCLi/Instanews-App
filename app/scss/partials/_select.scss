@@ -16,7 +16,7 @@
   select {
     -webkit-appearance: none;
     appearance: none;
-    background: none;
+    background: white;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
@@ -26,7 +26,7 @@
 
     /* Focus style */
     &:focus {
-      background-color: transparent;
+      background-color: white;
       outline: none;
     }
   }
@@ -55,14 +55,13 @@
         }
 
         &:focus::-ms-value {
-          background: transparent;
+          background: white;
           color: #000;
         }
-
       }
     }
   }
-
+  
   @supports( -moz-appearance: none ) {
     & {
       width: 100%;          
@@ -70,11 +69,10 @@
   }
 }
 
-
-// Demo Colors
-$mainColour: rgb(152, 198, 236);
-$gray: rgb(214, 214, 214);
-$placeholder: rgb(114, 129, 212);
+$main-colour: rgb(0, 0, 0);
+$secondary-colour: rgb(133, 184, 231);
+$gray: #D6D6D6;
+$placeholder: rgb(153, 185, 212);
 $border: #E6E6E6;
 
 $border-width: 3px;
@@ -82,13 +80,14 @@ $border-width: 3px;
 // Select function
 @mixin form-input-select(){
   @include _select-form-reset;
-  color: $mainColour;
+  color: $main-colour;
   display: block;
+  border-radius: 0;
   box-shadow: none;
-  font-size: 1em;
-  margin-top: 9px;
-  margin-bottom: 15px;
-  width: 100%;
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%;
 
   &::before,
   &::after {
@@ -121,8 +120,8 @@ $border-width: 3px;
   &:hover {
 
     select {
-      box-shadow: 0 2px 3px rgba($mainColour, 0.1) inset;
-      border-color: $mainColour;
+      box-shadow: 0 2px 3px rgba($secondary-colour, 0.1) inset;
+      border-color: $secondary-colour;
 
       // outline is critical but when we are hovering the div has the border already.
       &:focus {
@@ -132,10 +131,10 @@ $border-width: 3px;
     }
 
     &::before {
-      border-bottom-color: $mainColour;
+      border-bottom-color: $secondary-colour;
     }
     &::after {
-      border-top-color: $mainColour;
+      border-top-color: $secondary-colour;
     }
 
   }
@@ -146,7 +145,7 @@ $border-width: 3px;
   select {
     border: $border-width solid $border;
     border-radius: 0;
-    font-weight: 1000;
+    font-weight: 400;
     color: inherit;
     padding: 11px 15px;
     line-height: normal;
@@ -157,9 +156,9 @@ $border-width: 3px;
     // we really need this for the tabbers
     // causes double borders though
     &:focus {
-      box-shadow: 0 3px 4px rgba($mainColour, 0.3) inset;
+      box-shadow: 0 3px 4px rgba($secondary-colour, 0.3) inset;
       // outline is critical for usability
-      outline: $border-width solid $mainColour;
+      outline: $border-width solid $secondary-colour;
       outline-offset: -#{$border-width}; //offset vs width
     }
 
@@ -172,6 +171,7 @@ $border-width: 3px;
     &:invalid {
       color: $placeholder;
     }
+
   }
 }
 
