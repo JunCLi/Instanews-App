@@ -294,6 +294,11 @@ template {
   font-weight: 300;
   font-style: normal; }
 
+/*
+=========================
+Most of this is not my code, I adapted and changed the code found on a codepen to suit my needs. The codepen can be found in the readme.
+=========================
+*/
 [include*="form-input-select()"] {
   display: block;
   padding: 0;
